@@ -38,7 +38,7 @@ class Point(Geometry):
             theta = Sampler(1, n, 0, 2 * np.pi, type='grid')
             points = np.vstack((self.center[0] + self.r * np.cos(theta),
                                 self.center[1] + self.r * np.sin(theta))).T
-            self.boundary_points = points
+            self.boundary_points['0'] = points
             return points
         elif self.ndim == 3:
             i = Sampler(1, n, 0, n, type='grid')
@@ -48,7 +48,7 @@ class Point(Geometry):
                 (self.center[0] + self.r * np.cos(theta) * np.sin(phi),
                  self.center[1] + self.r * np.sin(theta) * np.sin(phi),
                  self.center[2] + self.r * np.cos(phi))).T
-            self.boundary_points = points
+            self.boundary_points[0] = points
             return points
 
     def random_points(self, n, seed=None, type='uniform'):
@@ -66,7 +66,7 @@ class Point(Geometry):
             theta = Sampler(1, n, 0, 2 * np.pi, type='random')
             points = np.vstack((self.r * np.cos(theta),
                                 self.r * np.sin(theta))).T
-            self.boundary_points = points
+            self.boundary_points[0] = points
             return points
         elif self.ndim == 3:
             u = Sampler(1, n, 0, 1, type='normal')
@@ -80,5 +80,5 @@ class Point(Geometry):
 
             points = np.vstack((x, y, z)).T
             points = points * self.r + self.center
-            self.boundary_points = points
+            self.boundary_points[0] = points
             return points
