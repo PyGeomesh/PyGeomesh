@@ -23,3 +23,6 @@ def Sampler(ndim, n, l_bounds, u_bounds, seed=None, type=None):
         return np.linspace(l_bounds, u_bounds, n)
     elif type == 'normal':
         return stats.norm.rvs(size=(ndim, n))
+    elif type == 'random':
+        return np.random.random(size=(ndim,
+                                      n)) * (u_bounds - l_bounds) + l_bounds
