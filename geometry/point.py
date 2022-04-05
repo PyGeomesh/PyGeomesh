@@ -11,6 +11,10 @@ class Point(Geometry):
         self.ndim = len(center)
         self.grometry = grometry
 
+    def __str__(self):
+        return "Point(%s, %s, %f, %s)" % (self.time_dependent, self.center,
+                                          self.r, self.grometry)
+
     def is_internal(self, x):
         return np.linalg.norm(x - self.center, axis=1) <= self.r
 

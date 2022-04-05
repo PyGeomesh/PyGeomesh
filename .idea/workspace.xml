@@ -4,30 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="93d3f0b0-9915-45d5-8625-a07601777af0" name="Changes" comment="Changes">
-      <change beforePath="$PROJECT_DIR$/.idea/Geometry.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Geometry.iml" afterDir="false" />
+    <list default="true" id="73c967cb-b128-4e96-b655-96b6a38b0630" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Geometry.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geometry/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geometry/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geometry/point.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/point.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geometry/polygon.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/polygon.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grid_point.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/grid_point.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grid_polygon.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/grid_polygon.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/random_point.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/random_point.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/random_polygon.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/random_polygon.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
-    <envs>
-      <env key="FLASK_APP" value="app" />
-    </envs>
-    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
-    <option name="myEnvs">
-      <map>
-        <entry key="FLASK_APP" value="app" />
-      </map>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -35,7 +27,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="27EUAkShm1xE7isxZkcbnbcmV7W" />
+  <component name="ProjectId" id="27NVIidTr8MSvTSOsavYNx3N4x3" />
   <component name="ProjectViewState">
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -50,37 +42,24 @@
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="93d3f0b0-9915-45d5-8625-a07601777af0" name="Changes" comment="" />
-      <created>1648884597814</created>
+      <changelist id="73c967cb-b128-4e96-b655-96b6a38b0630" name="Changes" comment="" />
+      <created>1649160453215</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1648884597814</updated>
-      <workItem from="1648884600622" duration="116000" />
-      <workItem from="1648885144067" duration="62000" />
-      <workItem from="1648885240262" duration="62000" />
-      <workItem from="1648885332171" duration="1323000" />
+      <updated>1649160453215</updated>
+      <workItem from="1649160455806" duration="168000" />
+      <workItem from="1649160648164" duration="23000" />
+      <workItem from="1649160673470" duration="7240000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
-          <url>notebook://D:/Files/Codefield/Code_Project/Geometry/grid_polygon.ipynb</url>
-          <line>8</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

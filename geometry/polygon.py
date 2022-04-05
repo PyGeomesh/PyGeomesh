@@ -6,7 +6,7 @@ from shapely.geometry import Point as ShapelyPoint
 
 
 class Polygon(Geometry):
-    def __init__(self, time_dependent, *pointlist):
+    def __init__(self, time_dependent, pointlist):
         super().__init__(time_dependent)
         self.shape = ShapelyPolygon(pointlist)
         self.pointlist = pointlist
@@ -17,6 +17,9 @@ class Polygon(Geometry):
         for i in range(self.ndim):
             self.l_bounds[i] = min([point[i] for point in pointlist])
             self.u_bounds[i] = max([point[i] for point in pointlist])
+
+    def __str__(self):
+        return "Polygon(%s)" % self.pointlist
 
     def _is_internal(self, x):
         return self.shape.intersects(ShapelyPoint(x))
@@ -60,7 +63,7 @@ class Polygon(Geometry):
             vlist.append(np.vstack((x, y)).T)
             # every segment will save like this: {'0': [[x1, y1],...], '1': [[x2, y2],...], ...}
             self.boundary_points[i] = np.vstack((x, y)).T
-        
+
         self.boundary_points['num'] = self.n
         # for development
         points = np.vstack(vlist)

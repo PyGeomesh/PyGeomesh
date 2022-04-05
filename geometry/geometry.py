@@ -11,42 +11,42 @@ class Geometry(abc.ABC):
         self.boundary_points = dict()
         self.boundary_points['num'] = []
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def is_internal(self, x):
         '''
         Returns True if the point x is internal to the geometry.
         '''
         pass
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def is_boundary(self, x):
         '''
         Returns True if the point x is on the boundary of the geometry.
         '''
         pass
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def grid_points(self, n):
         '''
         Returns a list of n grid points.
         '''
         pass
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def grid_points_on_boundary(self, n):
         '''
         Returns a list of n grid points on the boundary.
         '''
         pass
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def random_points(self, n, seed=None, type=None):
         '''
         Returns a list of n random points.
         '''
         pass
 
-    @abc.abstractmethod
+    # @abc.abstractmethod
     def random_points_on_boundary(self, n, seed=None, type=None):
         '''
         Returns a list of n random points on the boundary.
