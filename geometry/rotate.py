@@ -1,6 +1,7 @@
 from .geometry import Geometry
 from .sampler import Sampler
 import numpy as np
+from .transform import Transform
 
 
 class Rotate(Geometry):
@@ -38,3 +39,27 @@ class Rotate(Geometry):
         points = points[self.check_alpha(points)]
         self.points = points
         return points
+
+    def grid_points_on_boundary(self, n):
+        theta = Sampler(1, n, 0, 2 * np.pi, type='grid')
+        self.geometry.grid_points_on_boundary(n * 2)
+        if self.angle == np.pi * 2:
+            point = {}
+            for i in range(len(theta)):
+                for key in self.geometry.boundary_points:
+                    if point.get(key) is None:
+                        point[key] = []
+                    if key == 'num':
+                        continue
+                    temp = Transform.expand(self.geometry.boundary_points[key], theta[i])
+                    point[key].append(temp)
+
+            for key in point:
+                if key == 'num':
+                    continue
+                point[key] = np.vstack(point[key])
+                point[key] = np.array(point[key])
+            self.boundary_points = point
+        else:
+            pass
+        return self.boundary_points

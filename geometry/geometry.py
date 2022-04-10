@@ -13,16 +13,16 @@ class Geometry(abc.ABC):
 
     # @abc.abstractmethod
     def is_internal(self, x):
-        '''
+        """
         Returns True if the point x is internal to the geometry.
-        '''
+        """
         pass
 
     # @abc.abstractmethod
     def is_boundary(self, x):
-        '''
+        """
         Returns True if the point x is on the boundary of the geometry.
-        '''
+        """
         pass
 
     # @abc.abstractmethod

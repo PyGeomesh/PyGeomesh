@@ -26,3 +26,5 @@ def Sampler(ndim, n, l_bounds, u_bounds, seed=None, type=None):
     elif type == 'random':
         return np.random.random(size=(ndim,
                                       n)) * (u_bounds - l_bounds) + l_bounds
+    elif type == 'arange':
+        return np.arange(l_bounds, u_bounds, n)
