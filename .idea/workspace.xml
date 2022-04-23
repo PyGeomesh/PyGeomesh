@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d03f28f7-81aa-4de1-9e1c-e9d0b0abdbf2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/geometry/transform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/combination.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/combination.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geometry/geometry.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/geometry.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/geometry/polygon.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/polygon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/geometry/rotate.py" beforeDir="false" afterPath="$PROJECT_DIR$/geometry/rotate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grid_polygon.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/grid_polygon.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grid_rotate.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/grid_rotate.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/random_polygon.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/random_polygon.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +74,7 @@
       <updated>1649208516605</updated>
       <workItem from="1649208518185" duration="3021000" />
       <workItem from="1649298065849" duration="1211000" />
+      <workItem from="1649743408175" duration="14000" />
     </task>
     <servers />
   </component>

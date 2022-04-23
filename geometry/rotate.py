@@ -5,7 +5,8 @@ from .transform import Transform
 
 
 class Rotate(Geometry):
-    def __init__(self, geometry, angle):
+    def __init__(self, geometry, angle, ):
+        super().__init__(geometry.time_dependent)
         self.angle = angle
         self.geometry = geometry
         self.pointlist = geometry.pointlist
@@ -27,7 +28,8 @@ class Rotate(Geometry):
         return self.geometry.is_internal(np.array([r, x[:, 2]]).T)
 
     def is_boundary(self, x):
-        return super().is_boundary(x)
+        r = np.sqrt(np.square(x[:, 0]) + np.square(x[:, 1]))
+        return self.geometry.is_boundary(np.array([r, x[:, 2]]).T)
 
     def grid_points(self, n):
         vlist = []

@@ -6,7 +6,7 @@ from shapely.geometry import Point as ShapelyPoint
 
 
 class Polygon(Geometry):
-    def __init__(self, time_dependent, pointlist):
+    def __init__(self, pointlist, time_dependent=False):
         super().__init__(time_dependent)
         self.shape = ShapelyPolygon(pointlist)
         self.pointlist = pointlist
@@ -28,7 +28,7 @@ class Polygon(Geometry):
         return [self._is_internal(point) for point in x]
 
     def _is_boundary(self, x):
-        return self.shape.distance(ShapelyPoint(x)) == 0
+        return self.shape.touches(ShapelyPoint(x))
 
     def is_boundary(self, x):
         return [self._is_boundary(point) for point in x]
@@ -37,7 +37,7 @@ class Polygon(Geometry):
         vlist = []
         for i in range(self.ndim):
             vlist.append(
-                Sampler(1, n, self.l_bounds[i], self.u_bounds[i], type='grid'))
+                Sampler(1, n, self.l_bounds[i], self.u_bounds[i], samplingtype='grid'))
 
         points = np.vstack(np.meshgrid(*vlist)).reshape(self.ndim, -1).T
         points = points[self.is_internal(points)]
@@ -56,7 +56,7 @@ class Polygon(Geometry):
                     (1 / width, -1 / width)[dy < 0],
                     self.pointlist[i][1],
                     self.pointlist[(i + 1) % self.n][1],
-                    type='arange')
+                    samplingtype='grid')
                 x = np.full_like(y, self.pointlist[i][0])
             elif dy == 0:
                 x = Sampler(
@@ -64,7 +64,7 @@ class Polygon(Geometry):
                     (1 / width, -1 / width)[dx < 0],
                     self.pointlist[i][0],
                     self.pointlist[(i + 1) % self.n][0],
-                    type='arange')
+                    samplingtype='grid')
                 y = np.full_like(x, self.pointlist[i][1])
             else:
                 d = np.sqrt(np.square(1 / width) / (1 + np.square(dx / dy)))
@@ -73,7 +73,7 @@ class Polygon(Geometry):
                     (d, -d)[dx < 0],
                     self.pointlist[i][0],
                     self.pointlist[(i + 1) % self.n][0],
-                    type='arange')
+                    samplingtype='grid')
                 y = (dy / dx) * (
                         x - self.pointlist[i][0]) + self.pointlist[i][1]
             vlist.append(np.vstack((x, y)).T)
@@ -85,44 +85,49 @@ class Polygon(Geometry):
         points = np.vstack(vlist)
         return points
 
-    def random_points(self, n, seed=None, type='random'):
-        x = Sampler(1, n, self.l_bounds[0], self.u_bounds[0], type=type)
-        y = Sampler(1, n, self.l_bounds[1], self.u_bounds[1], type=type)
-        points = np.vstack((x, y)).T
-        points = points[self.is_internal(points)]
-        self.points = points
-        return points
+    def random_points(self, n, samplingtype='random'):
+        vlist = []
+        for i in range(n):
+            x = Sampler(1, 1, self.l_bounds[0], self.u_bounds[0], samplingtype=samplingtype)
+            y = Sampler(1, 1, self.l_bounds[1], self.u_bounds[1], samplingtype=samplingtype)
+            while not self._is_internal([x, y]):
+                x = Sampler(1, 1, self.l_bounds[0], self.u_bounds[0], samplingtype=samplingtype)
+                y = Sampler(1, 1, self.l_bounds[1], self.u_bounds[1], samplingtype=samplingtype)
+            vlist.append([x, y])
 
-    def random_points_on_boundary(self, n, seed=None, type='random'):
+        self.points = np.vstack(np.array(vlist).T).T.squeeze()
+        return self.points
+
+    def random_points_on_boundary(self, width):
         vlist = []
         for i in range(self.n):
-
             dx = self.pointlist[(i + 1) % self.n][0] - self.pointlist[i][0]
             dy = self.pointlist[(i + 1) % self.n][1] - self.pointlist[i][1]
-
+            len = np.sqrt(dx ** 2 + dy ** 2)
+            n = int(width * len)
             if dx == 0:
                 y = Sampler(
                     1,
                     n,
                     self.pointlist[i][1],
                     self.pointlist[(i + 1) % self.n][1],
-                    type=type)
-                x = np.full(n, self.pointlist[i][0])
+                    samplingtype='random')
+                x = np.full_like(y, self.pointlist[i][0])
             elif dy == 0:
                 x = Sampler(
                     1,
                     n,
                     self.pointlist[i][0],
                     self.pointlist[(i + 1) % self.n][0],
-                    type=type)
-                y = np.full(n, self.pointlist[i][1])
+                    samplingtype='random')
+                y = np.full_like(x, self.pointlist[i][1])
             else:
                 x = Sampler(
                     1,
                     n,
                     self.pointlist[i][0],
                     self.pointlist[(i + 1) % self.n][0],
-                    type=type)
+                    samplingtype='random')
                 y = (dy / dx) * (
                         x - self.pointlist[i][0]) + self.pointlist[i][1]
             vlist.append(np.vstack((x, y)).T)
@@ -130,5 +135,6 @@ class Polygon(Geometry):
             self.boundary_points[i] = np.vstack((x, y)).T
 
         self.boundary_points['num'] = self.n
+        # for development
         points = np.vstack(vlist)
         return points
