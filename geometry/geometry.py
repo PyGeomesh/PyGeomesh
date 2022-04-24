@@ -83,25 +83,18 @@ class Geometry(abc.ABC):
     def difference(self, other):
         # produce a list of points that are in self but not in other
         for boundary in self.boundary_points:
-            if boundary == 'num':
-                continue
 
             self.boundary_points[boundary] = self.boundary_points[boundary][
                 np.logical_not(
                     other.is_internal(self.boundary_points[boundary]))]
 
-        num = self.boundary_points['num']
 
         # produce a list of points that are in other but not in self
         for boundary in other.boundary_points:
-            if boundary == 'num':
-                continue
 
             self.boundary_points[num] = other.boundary_points[boundary][
                 self.is_internal(other.boundary_points[boundary])]
-            num += 1
 
-        self.boundary_points['num'] = num
 
         # produce a list of points that are in both self and other
         self.points = self.points[np.logical_not(
