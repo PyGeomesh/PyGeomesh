@@ -4,3 +4,4 @@ from .polygon import Polygon
 from .rotate import Rotate
 from .sampler import Sampler
 from .transform import Transform
+from .box import Box
