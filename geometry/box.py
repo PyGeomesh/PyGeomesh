@@ -24,7 +24,8 @@ class Box(Geometry):
         return "Box: center: {}, q: {}, length: {}, width: {}, height: {}, ".format(
             self.center, self.q, self.length, self.width, self.height)
 
-    def get_transformationMatrix(self):
+    @staticmethod
+    def get_transformationMatrix(q):
         """
         Calculate rotation matrix from Euler angle meter.
         ### TODO: check if q is correct
@@ -34,19 +35,13 @@ class Box(Geometry):
 
         # compute the transformation matrix
         # we use the euler angles to rotate the box z-y-x
-        gamma = np.array([[np.cos(self.q[0]), -np.sin(self.q[0]), 0],
-                          [np.sin(self.q[0]),
-                           np.cos(self.q[0]), 0], [0, 0, 1]])
-        beta = np.array([[1, 0, 0], [0,
-                                     np.cos(self.q[1]), -np.sin(self.q[1])],
-                         [0, np.sin(self.q[1]),
-                          np.cos(self.q[1])]])
-        alpha = np.array([[np.cos(self.q[2]), 0,
-                           np.sin(self.q[2])], [0, 1, 0],
-                          [-np.sin(self.q[2]), 0,
-                           np.cos(self.q[2])]])
-        self.transformationMatrix = np.dot(np.dot(gamma, beta), alpha)
-        return self.transformationMatrix
+        gamma = np.array([[np.cos(q[0]), -np.sin(q[0]), 0],
+                          [np.sin(q[0]), np.cos(q[0]), 0], [0, 0, 1]])
+        beta = np.array([[1, 0, 0], [0, np.cos(q[1]), -np.sin(q[1])],
+                         [0, np.sin(q[1]), np.cos(q[1])]])
+        alpha = np.array([[np.cos(q[2]), 0, np.sin(q[2])], [0, 1, 0],
+                          [-np.sin(q[2]), 0, np.cos(q[2])]])
+        return np.dot(np.dot(gamma, beta), alpha)
 
     def do_transform(self, x):
         """
@@ -127,7 +122,10 @@ class Box(Geometry):
         ### Return:
         - `is_internal` (list): True if point is inside the box, False otherwise
         """
-        return [self._is_internal(i) for i in x]
+        if isinstance(x, list):
+            return [self._is_internal(i) for i in x]
+        else:
+            return self._is_internal(x)
 
     def _is_boundary(self, x):
         """
