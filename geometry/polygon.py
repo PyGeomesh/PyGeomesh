@@ -37,7 +37,12 @@ class Polygon(Geometry):
         vlist = []
         for i in range(self.ndim):
             vlist.append(
-                Sampler(1, n, self.l_bounds[i], self.u_bounds[i], samplingtype='grid'))
+                Sampler(
+                    1,
+                    n,
+                    self.l_bounds[i],
+                    self.u_bounds[i],
+                    samplingtype='grid'))
 
         points = np.vstack(np.meshgrid(*vlist)).reshape(self.ndim, -1).T
         points = points[self.is_internal(points)]
@@ -52,16 +57,14 @@ class Polygon(Geometry):
 
             if dx == 0:
                 y = Sampler(
-                    1,
-                    (1 / width, -1 / width)[dy < 0],
+                    1, (1 / width, -1 / width)[dy < 0],
                     self.pointlist[i][1],
                     self.pointlist[(i + 1) % self.n][1],
                     samplingtype='grid')
                 x = np.full_like(y, self.pointlist[i][0])
             elif dy == 0:
                 x = Sampler(
-                    1,
-                    (1 / width, -1 / width)[dx < 0],
+                    1, (1 / width, -1 / width)[dx < 0],
                     self.pointlist[i][0],
                     self.pointlist[(i + 1) % self.n][0],
                     samplingtype='grid')
@@ -69,16 +72,15 @@ class Polygon(Geometry):
             else:
                 d = np.sqrt(np.square(1 / width) / (1 + np.square(dx / dy)))
                 x = Sampler(
-                    1,
-                    (d, -d)[dx < 0],
+                    1, (d, -d)[dx < 0],
                     self.pointlist[i][0],
                     self.pointlist[(i + 1) % self.n][0],
                     samplingtype='grid')
                 y = (dy / dx) * (
-                        x - self.pointlist[i][0]) + self.pointlist[i][1]
+                    x - self.pointlist[i][0]) + self.pointlist[i][1]
             vlist.append(np.vstack((x, y)).T)
-            # every segment will save like this: {'0': [[x1, y1],...], '1': [[x2, y2],...], ...}
-            self.boundary_points[i] = np.vstack((x, y)).T
+            # every segment will save like this: {'b0': [[x1, y1],...], 'b1': [[x2, y2],...], ...}
+            self.boundary_points['b' + str(i)] = np.vstack((x, y)).T
 
         self.boundary_points['num'] = self.n
         # for development
@@ -88,11 +90,31 @@ class Polygon(Geometry):
     def random_points(self, n, samplingtype='random'):
         vlist = []
         for i in range(n):
-            x = Sampler(1, 1, self.l_bounds[0], self.u_bounds[0], samplingtype=samplingtype)
-            y = Sampler(1, 1, self.l_bounds[1], self.u_bounds[1], samplingtype=samplingtype)
+            x = Sampler(
+                1,
+                1,
+                self.l_bounds[0],
+                self.u_bounds[0],
+                samplingtype=samplingtype)
+            y = Sampler(
+                1,
+                1,
+                self.l_bounds[1],
+                self.u_bounds[1],
+                samplingtype=samplingtype)
             while not self._is_internal([x, y]):
-                x = Sampler(1, 1, self.l_bounds[0], self.u_bounds[0], samplingtype=samplingtype)
-                y = Sampler(1, 1, self.l_bounds[1], self.u_bounds[1], samplingtype=samplingtype)
+                x = Sampler(
+                    1,
+                    1,
+                    self.l_bounds[0],
+                    self.u_bounds[0],
+                    samplingtype=samplingtype)
+                y = Sampler(
+                    1,
+                    1,
+                    self.l_bounds[1],
+                    self.u_bounds[1],
+                    samplingtype=samplingtype)
             vlist.append([x, y])
 
         self.points = np.vstack(np.array(vlist).T).T.squeeze()
@@ -103,7 +125,7 @@ class Polygon(Geometry):
         for i in range(self.n):
             dx = self.pointlist[(i + 1) % self.n][0] - self.pointlist[i][0]
             dy = self.pointlist[(i + 1) % self.n][1] - self.pointlist[i][1]
-            len = np.sqrt(dx ** 2 + dy ** 2)
+            len = np.sqrt(dx**2 + dy**2)
             n = int(width * len)
             if dx == 0:
                 y = Sampler(
@@ -129,10 +151,10 @@ class Polygon(Geometry):
                     self.pointlist[(i + 1) % self.n][0],
                     samplingtype='random')
                 y = (dy / dx) * (
-                        x - self.pointlist[i][0]) + self.pointlist[i][1]
+                    x - self.pointlist[i][0]) + self.pointlist[i][1]
             vlist.append(np.vstack((x, y)).T)
-            # every segment will save like this: {'0': [[x1, y1],...], '1': [[x2, y2],...], ...}
-            self.boundary_points[i] = np.vstack((x, y)).T
+            # every segment will save like this: {'b0': [[x1, y1],...], 'b1': [[x2, y2],...], ...}
+            self.boundary_points['b'+str(i)] = np.vstack((x, y)).T
 
         self.boundary_points['num'] = self.n
         # for development
