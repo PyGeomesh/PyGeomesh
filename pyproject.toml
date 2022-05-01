@@ -2,7 +2,7 @@
 name = "geomesh"
 version = "0.1.0"
 description = "Geomesh is a tool for generating meshes from geometry."
-authors = [{name = "PuQing", email = "me@puqing.work"}]
+authors = ["PuQing <me@puqing.work>"]
 readme = "README.md"
 license = "MIT"
 classifiers = [
@@ -16,15 +16,17 @@ classifiers = [
     "Programming Language :: Python :: 3.9",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
-dependencies = [
-    "gmsh",
-    "numpy",
-    "meshio",
-]
 keywords = ["mesh", "geometry", "mesh generation"]
 
 [tool.isort]
 profile = "black"
+
+[tool.poetry.dependencies]
+numpy = "*"
+matplotlib = "*"
+abc = "*"
+scipy = "*"
+shapely = "*"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

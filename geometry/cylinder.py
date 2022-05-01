@@ -1,5 +1,3 @@
-from traceback import print_tb
-from matplotlib.pyplot import pink, vlines
 from .geometry import Geometry
 import numpy as np
 from .box import Box
