@@ -27,7 +27,7 @@ jobs:
           repository: https://test.pypi.org/legacy/
 
       - name: Publish distribution 📦 to PyPI
-        if: startsWith(github.ref, "refs/tags/")
+        if: startsWith(github.ref, "refs/tags")
         uses: pypa/gh-actions-pypi-publish@master
         with:
           password: ${{secrets.PYPI_API_TOKEN}}
