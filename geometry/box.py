@@ -28,6 +28,10 @@ class Box(Geometry):
     def get_transformationMatrix(q):
         """
         Calculate rotation matrix from Euler angle meter.
+        
+        We first rotate around the z axis, then around the y axis, 
+        and finally around the x axis.
+        
         ### TODO: check if q is correct
         ### Return:
         - `transformationMatrix`: transformation matrix
