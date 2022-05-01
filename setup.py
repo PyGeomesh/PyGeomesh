@@ -1,11 +1,11 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name="geomesh",
     version="0.1.0",
     author="PuQing",
     author_email="me@puqing.work",
-    packages=["geomesh"],
+    packages=find_packages(),
     description="Generate meshes for geometries",
     url="https://github.com/AndPuQing/Geomesh",
     download_url="https://pypi.python.org/pypi/geomesh",
