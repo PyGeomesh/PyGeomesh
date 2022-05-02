@@ -4,12 +4,9 @@ from .box import Box
 
 
 class Cylinder(Geometry):
-    def __init__(self,
-                 pos,
-                 radius=1,
-                 length=1,
-                 q: list = [0, 0, 0],
-                 time_dependent=False):
+    def __init__(
+        self, pos, radius=1, length=1, q: list = [0, 0, 0], time_dependent=False
+    ):
         """
         Creat a Cylinder.
         ### Args:
@@ -33,7 +30,7 @@ class Cylinder(Geometry):
         self.transformationMatrix = Box.get_transformationMatrix(self.q)
 
     def __str__(self):
-        return 'Cylinder({}, {}, {})'.format(self.pos, self.radius, self.axis)
+        return "Cylinder({}, {}, {})".format(self.pos, self.radius, self.axis)
 
     def is_internal(self, x):
         """
@@ -102,10 +99,13 @@ class Cylinder(Geometry):
         l_po = np.linspace(0, self.length, n)
         vlist = []
         for i in range(n):
-            point = np.array([
-                self.radius * np.cos(theta), self.radius * np.sin(theta),
-                l_po[i] * np.ones(n)
-            ])
+            point = np.array(
+                [
+                    self.radius * np.cos(theta),
+                    self.radius * np.sin(theta),
+                    l_po[i] * np.ones(n),
+                ]
+            )
             print(point.shape)
             vlist.append(point.reshape(-1, 3))
 
