@@ -15,6 +15,3 @@ __all__ = [
     "Box",
     "Cylinder",
 ]
-
-__anthor__ = "PuQing"
-__email__ = "me@puqing.work"
