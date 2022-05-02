@@ -9,7 +9,7 @@ class Geometry(abc.ABC):
         self.points = []
         self.time_points = []
         self.boundary_points = dict()
-        self.boundary_points['num'] = None
+        self.boundary_points["num"] = None
 
     # @abc.abstractmethod
     def is_internal(self, x):
@@ -59,11 +59,7 @@ class Geometry(abc.ABC):
         """
         pass
 
-    def random_time_dependent(self,
-                              n,
-                              time_start,
-                              time_end,
-                              samplingtype=None):
+    def random_time_dependent(self, n, time_start, time_end, samplingtype=None):
         time = Sampler(1, n, time_start, time_end, samplingtype=type)
         self.time_points = time
         return time
@@ -85,17 +81,15 @@ class Geometry(abc.ABC):
         for boundary in self.boundary_points:
 
             self.boundary_points[boundary] = self.boundary_points[boundary][
-                np.logical_not(
-                    other.is_internal(self.boundary_points[boundary]))]
-
+                np.logical_not(other.is_internal(self.boundary_points[boundary]))
+            ]
 
         # produce a list of points that are in other but not in self
         for boundary in other.boundary_points:
 
             self.boundary_points[num] = other.boundary_points[boundary][
-                self.is_internal(other.boundary_points[boundary])]
-
+                self.is_internal(other.boundary_points[boundary])
+            ]
 
         # produce a list of points that are in both self and other
-        self.points = self.points[np.logical_not(
-            other.is_internal(self.points))]
+        self.points = self.points[np.logical_not(other.is_internal(self.points))]
