@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "geomesh"
+name = "pygeomesh"
 version = "0.1.0"
-description = "Geomesh is a tool for generating meshes from geometry."
+description = "PyGeomesh is a tool for generating discretized points from geometry."
 authors = ["PuQing <me@puqing.work>"]
 readme = "README.md"
-license = "MIT"
+license = "Apache-2.0"
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
