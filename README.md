@@ -1,26 +1,9 @@
 # PyGeometry
 
-[![Publish Python 🐍 distributions 📦 to PyPI and TestPyPI](https://github.com/AndPuQing/PyGeomesh/actions/workflows/publish-to-test-pypi.yml/badge.svg?branch=main)](https://github.com/AndPuQing/PyGeomesh/actions/workflows/publish-to-test-pypi.yml) [![wakatime](https://wakatime.com/badge/user/18644ffb-799a-4596-bf9f-2404ba651978/project/f02b8e04-904f-4934-8cb0-443861fa31a5.svg)](https://wakatime.com/badge/user/18644ffb-799a-4596-bf9f-2404ba651978/project/f02b8e04-904f-4934-8cb0-443861fa31a5)
+[![Publish](https://github.com/AndPuQing/PyGeomesh/actions/workflows/publish.yml/badge.svg)](https://github.com/AndPuQing/PyGeomesh/actions/workflows/publish.yml) [![wakatime](https://wakatime.com/badge/user/18644ffb-799a-4596-bf9f-2404ba651978/project/f02b8e04-904f-4934-8cb0-443861fa31a5.svg)](https://wakatime.com/badge/user/18644ffb-799a-4596-bf9f-2404ba651978/project/f02b8e04-904f-4934-8cb0-443861fa31a5) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/f847b41b25e94770aef0590e4bfa59c6)](https://www.codacy.com/gh/AndPuQing/PyGeomesh/dashboard?utm_source=github.com&utm_medium=referral&utm_content=AndPuQing/PyGeomesh&utm_campaign=Badge_Grade)
 
 PyGeomesh is a tool for generating discretized points from geometry.
 
-现在可用的几何图形有：
+> This project is building now.
 
-- 2D 多边形
-- 圆饼
-- 球
-- Box
-- 圆柱
-
-图形关系有：
-
-- 差集
-
-采样方式有：
-
-- 网格采样
-- 随机采样
-
-## 使用方式
-
-在仓库中 ipynb 均是样例，可以直接运行，或者在线查看
+This repository was created for PINN discretization solve domains. It can describe, operate, discretize, and enhance sampling of geometric figures. It has the advantage of being able to group geometric entities and initialize constraints individually.
