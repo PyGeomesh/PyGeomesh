@@ -2,9 +2,9 @@ name: Publish
 
 on:
   push:
-    branches:
-      - main
-      - develop
+    tags:
+      - "v*"
+      - "*"
 
 jobs:
   build-n-publish:
@@ -24,16 +24,7 @@ jobs:
         run: >-
           python setup.py sdist bdist_wheel
 
-      - name: Publish distribution 📦 to Test PyPI
-        if: github.ref == 'refs/heads/develop'
-        uses: pypa/gh-action-pypi-publish@release/v1
-        with:
-          user: __token__
-          password: ${{secrets.TEST_PYPI_API_TOKEN}}
-          repository_url: https://test.pypi.org/legacy/
-
       - name: Publish distribution 📦 to PyPI
-        if: github.ref == 'refs/heads/main'
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
           user: __token__
