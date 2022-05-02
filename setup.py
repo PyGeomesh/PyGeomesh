@@ -8,12 +8,13 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="pygeomesh",
-    version="0.1.0.2",
+    version="0.1.0.3",
     author="PuQing",
     author_email="me@puqing.work",
     packages=find_packages(),
     description="PyGeomesh is a tool for generating discretized points from geometry.",
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url="https://github.com/AndPuQing/PyGeomesh",
     download_url="https://pypi.python.org/pypi/pygeomesh",
     license="Apache License 2.0",
