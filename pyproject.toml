@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pygeomesh"
-version = "0.1.0"
+version = "0.1.0.4"
 description = "PyGeomesh is a tool for generating discretized points from geometry."
 authors = ["PuQing <me@puqing.work>"]
 readme = "README.md"
