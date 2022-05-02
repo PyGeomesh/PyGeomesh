@@ -8,7 +8,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="pygeomesh",
-    version="0.1.0.1",
+    version="0.1.0.2",
     author="PuQing",
     author_email="me@puqing.work",
     packages=find_packages(),
