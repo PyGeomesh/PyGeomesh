@@ -16,6 +16,5 @@ __all__ = [
     "Cylinder",
 ]
 
-__version__ = "0.1.0"
 __anthor__ = "PuQing"
 __email__ = "me@puqing.work"
