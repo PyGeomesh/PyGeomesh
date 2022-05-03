@@ -1,6 +1,5 @@
 import abc
 import numpy as np
-from .sampler import Sampler
 
 
 class Geometry(abc.ABC):
@@ -58,11 +57,6 @@ class Geometry(abc.ABC):
         Returns a list of n time-dependent points.
         """
         pass
-
-    def random_time_dependent(self, n, time_start, time_end, samplingtype=None):
-        time = Sampler(1, n, time_start, time_end, samplingtype=type)
-        self.time_points = time
-        return time
 
     def union(self, other):
         """

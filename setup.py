@@ -1,14 +1,23 @@
 from setuptools import setup, find_packages
 from os import path
 
+packageName = "pygeomesh"
+
 this_directory = path.abspath(path.dirname(__file__))
+
+# Get the long description from the README file
 with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
     long_description = f.read()
 
+# version scheme: major.minor.patch
+versionInfo = 0, 1, 1
+
+__version__ = ".".join(map(str, versionInfo))
+
 
 setup(
-    name="pygeomesh",
-    version="0.1.0.4",
+    name=packageName,
+    version=__version__,
     author="PuQing",
     author_email="me@puqing.work",
     packages=find_packages(),
