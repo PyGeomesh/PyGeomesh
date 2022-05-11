@@ -4,13 +4,13 @@ import numpy as np
 
 class Box(Geometry):
     def __init__(
-        self,
-        center: list,
-        length: float,
-        width: float,
-        height: float,
-        q: list = [0, 0, 0],
-        time_dependent=False,
+            self,
+            center: list,
+            length: float,
+            width: float,
+            height: float,
+            q: list = [0, 0, 0],
+            time_dependent=False,
     ) -> None:
         super().__init__(time_dependent)
         self.center = center
@@ -145,7 +145,7 @@ class Box(Geometry):
         """
         # check if point is inside the box
         if np.all(x >= self.center - self.length / 2) and np.all(
-            x <= self.center + self.length / 2
+                x <= self.center + self.length / 2
         ):
             return True
         else:
@@ -175,7 +175,7 @@ class Box(Geometry):
         """
         # check if point is on the boundary of the box
         if np.all(x == self.center - self.length / 2) or np.all(
-            x == self.center + self.length / 2
+                x == self.center + self.length / 2
         ):
             return True
         else:
@@ -334,8 +334,8 @@ class Box(Geometry):
         for i in range(2):
             point = (
                 np.meshgrid(x, self.center[1] + flag * self.width / 2, z)
-                .reshape(3, -1)
-                .T
+                    .reshape(3, -1)
+                    .T
             )
             surfacepoints[i] = np.dot(self.transformationMatrix, point.T).T
             flag *= -1
@@ -343,8 +343,8 @@ class Box(Geometry):
         for i in range(2):
             point = (
                 np.meshgrid(self.center[0] + flag * self.length / 2, y, z)
-                .reshape(3, -1)
-                .T
+                    .reshape(3, -1)
+                    .T
             )
             surfacepoints[i + 2] = np.dot(self.transformationMatrix, point.T).T
             flag *= -1
