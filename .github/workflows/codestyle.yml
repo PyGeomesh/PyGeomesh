@@ -15,3 +15,4 @@ jobs:
           use-isort: false
           use-pylint: false
           use-vulture: false
+          use-flake8: false
