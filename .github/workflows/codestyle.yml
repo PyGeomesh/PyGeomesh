@@ -1,0 +1,17 @@
+name: CodeStyle
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: rahul-deepsource/pyaction@1.4.0
+        with:
+          use-pycodestyle: false
+          use-mypy: false
+          use-isort: false
+          use-pylint: false
+          use-vulture: false
