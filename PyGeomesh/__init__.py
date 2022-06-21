@@ -1,12 +1,8 @@
 from .geometry import Geometry
-from .helper import model
+from .helper import extract_points, model
 
 __all__ = [
     "Geometry",
-    "Point",
-    "Polygon",
-    "Transform",
-    "Box",
-    "Cylinder",
     "model",
+    "extract_points",
 ]
