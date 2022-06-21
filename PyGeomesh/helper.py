@@ -1,11 +1,9 @@
 import meshio
-from gmsh import model
-
-
-class model(model):
-    pass
+from gmsh import model  # noqa
 
 
 def read(filename):
-    """Read a mesh from a file"""
+    """
+    Read a mesh from a file.
+    """
     return meshio.read(filename)
