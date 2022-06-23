@@ -1,10 +1,4 @@
 import meshio
-from gmsh import model as gmsh_model
-
-
-class model(gmsh_model):
-    def __init__(self):
-        super().__init__()
 
 
 def read(filename):
