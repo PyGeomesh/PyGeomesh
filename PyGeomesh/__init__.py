@@ -1,12 +1,12 @@
+import gmsh
+
 from .geometry import Geometry
-from .helper import model
+from .helper import extract_points, model
+
+gmsh.initialize()
 
 __all__ = [
     "Geometry",
-    "Point",
-    "Polygon",
-    "Transform",
-    "Box",
-    "Cylinder",
     "model",
+    "extract_points",
 ]

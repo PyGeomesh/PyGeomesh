@@ -1,15 +1,16 @@
-class _Geometry:
-    """
-    Class for all geometries.
-
-    Attributes
-
-    model: gmsh.model
-
-    """
-
-    def __call__(self):
-        return self
+import gmsh
+from meshio import Mesh
+from pygmsh.occ import Geometry as OccGeometry
 
 
-Geometry = _Geometry()
+class Geometry(OccGeometry):
+    mesh: Mesh
+
+    def __new__(cls):
+        gmsh.model.add(cls.__name__)
+        gmsh.model.setCurrent(cls.__name__)
+        return super(Geometry, cls).__new__(cls)
+
+    @staticmethod
+    def show(mesh: Mesh):
+        print(mesh)
